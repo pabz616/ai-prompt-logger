@@ -1,0 +1,32 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
+  background-color: #DC143C;
+  padding: 2px;
+}
+
+.header {
+  background-color: #003366;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tr:hover{
+    background-color: #999;
+}
