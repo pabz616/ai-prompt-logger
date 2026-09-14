@@ -10,8 +10,8 @@ Leverage AI to log user prompts, limiting responses to 10 characters
 4. The exchanged is tracked in the database using SQLite3.
 
 ## HOW IT LOOKS
-The output
-<img />
+<img width="742" height="294" alt="Screenshot 2026-09-13 at 10 16 48 PM" src="https://github.com/user-attachments/assets/faa9ebd3-6f65-4506-b3af-445953350624" />
+
 
 ## HOW IT WAS TESTED
 
