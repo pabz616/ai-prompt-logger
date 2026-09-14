@@ -7,7 +7,7 @@ Leverage AI to log user prompts, limiting responses to 10 characters
 1. Run the `sql-report.py` script.
 2. At the prompt, HOW CAN I HELP? enter your desired prompt.
 3. The AI - using Gemma4 - responds in about 10 characters or less.
-4. The exchanged is tracked in the database using SQLite3.
+4. The exchange is tracked in the database using SQLite3.
 
 ## HOW IT LOOKS
 <img width="742" height="294" alt="Screenshot 2026-09-13 at 10 16 48 PM" src="https://github.com/user-attachments/assets/faa9ebd3-6f65-4506-b3af-445953350624" />
