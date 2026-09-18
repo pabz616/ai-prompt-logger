@@ -1,4 +1,5 @@
 from ollama import chat, ChatResponse
+import html
 import sqlite3
 from utils.test_data import MODEL, HTML_START, HTML_TABLE_HEADER, HTML_END, HTML_TITLE, DB
 
@@ -8,7 +9,7 @@ injection = 'Answer in under 10 words'
 # CREATE THE TABLE IF IT DOES NOT EXIST
 class db:
     def create():
-        conn = sqlite3.connect("ai-class.db")
+        conn = sqlite3.connect(DB)
         cursor = conn.cursor()
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS thread (query,response,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
@@ -18,7 +19,7 @@ class db:
 
 # ADD A NEW RECORD TO THE TABLE
     def insert(query, response):
-        conn = sqlite3.connect("ai-class.db")
+        conn = sqlite3.connect(DB)
         cursor = conn.cursor()
         sql = 'insert into thread(query,response) values(?,?)'
         cursor.execute(sql, (query, response))
@@ -45,8 +46,8 @@ def report():
             request = line[0].replace('Answer in under 10 words -- ', '')
             file.write(f'''
             <tr>
-            <td>{request}</td>
-            <td>{line[1]}</td>
+            <td>{html.escape(request)}</td>
+            <td>{html.escape(line[1])}</td>
             <td>{line[2]}</td>
             </tr>
             ''')
@@ -56,7 +57,9 @@ def report():
 # RUN THE SCRIPT
 def ai(query):
     response: ChatResponse = chat(model=MODEL, messages=[{'role': 'user', 'content': query, },])
-    return response.message.content
+    content = response.message.content
+    assert content and content.strip(), f"Gemma returned an unusable response: {content!r}"
+    return content
 
 
 def main():
